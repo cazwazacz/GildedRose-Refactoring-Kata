@@ -14,6 +14,12 @@ describe GildedRose do
       GildedRose.new(items).update_quality()
       expect(items[0].quality).to eq 8
     end
+
+    it "quality is never negative" do
+      items = [Item.new("junk", 5, 5)]
+      10.times { GildedRose.new(items).update_quality() }
+      expect(items[0].quality).to eq 0
+    end
   end
 
 end
