@@ -21,10 +21,16 @@ describe GildedRose do
       expect(items[0].quality).to eq 0
     end
 
-    it "the quality of Aged Brie increases with time" do
+    it "quality of Aged Brie increases with time" do
       items = [Item.new("Aged Brie", 10, 2)]
       5.times { GildedRose.new(items).update_quality() }
       expect(items[0].quality).to eq 7
+    end
+
+    it "quality of an item can never increase above 50" do
+      items = [Item.new("Aged Brie", 10, 48)]
+      5.times { GildedRose.new(items).update_quality() }
+      expect(items[0].quality).to eq 50
     end
   end
 
