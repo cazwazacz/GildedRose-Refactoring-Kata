@@ -73,10 +73,16 @@ describe GildedRose do
       expect(items[0].quality).to eq 33
     end
 
-    it "the quality of Backstage passes iz zero when sell_in has passed" do
+    it "the quality of Backstage passes is zero when sell_in has passed" do
       items = [ItemDouble.new("Backstage passes to a TAFKAL80ETC concert", 2, 30)]
       5.times { GildedRose.new(items).update_quality() }
       expect(items[0].quality).to eq 0
+    end
+
+    it "the quality of Conjured items decreases twice as fast as normal items" do
+      items = [ItemDouble.new("Conjured Mana Cake", 7, 20)]
+      5.times { GildedRose.new(items).update_quality() }
+      expect(items[0].quality).to eq 10
     end
   end
 
