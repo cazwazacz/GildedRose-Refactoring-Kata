@@ -1,5 +1,6 @@
 require File.join(File.dirname(__FILE__), '../lib/gilded_rose')
 require File.join(File.dirname(__FILE__), '../lib/item_sorter')
+require File.join(File.dirname(__FILE__), '../lib/aged_brie')
 
 class ItemDouble
   attr_accessor :name, :sell_in, :quality
@@ -34,7 +35,7 @@ describe GildedRose do
 
     it "quality of Aged Brie increases with time" do
       items = [ItemDouble.new("Aged Brie", 10, 2)]
-      5.times { GildedRose.new(items, ItemSorter).update_quality() }
+      5.times { GildedRose.new(items, ItemSorter, AgedBrie).update_quality() }
       expect(items[0].quality).to eq 7
     end
 

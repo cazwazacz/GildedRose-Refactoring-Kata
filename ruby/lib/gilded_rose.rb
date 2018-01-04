@@ -1,12 +1,12 @@
 class GildedRose
-  def initialize(items, item_sorter)
+  def initialize(items, item_sorter, aged_brie)
     @items = items
-    @item_sorter = item_sorter
+    @item_sorter = item_sorter.new(aged_brie)
   end
 
   def update_quality
     @items.each do |item|
-      p @item_sorter.sort[item.name.to_sym]
+      p @item_sorter.sort_and_update(item.name)
     end
   end
   # def update_quality()
