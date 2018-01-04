@@ -12,13 +12,27 @@ class ItemSorter
   end
 
   def sort_and_update(item)
-    special_item?(item)
+    special_item?(item) ? update_special_item(item) : update_regular_item(item)
   end
 
   private
 
   def special_item?(item)
-    @items[item.name.to_sym].call(item) if @items[item.name.to_sym]
+    @items[item.name.to_sym]
+  end
+
+  def update_special_item(item)
+    @items[item.name.to_sym].call(item)
+  end
+
+  def update_regular_item(item)
+    if item.quality > 0
+      if item.sell_in < 1
+        item.quality = item.quality - 2
+      else
+        item.quality = item.quality - 1
+      end
+    end
   end
 
 end
