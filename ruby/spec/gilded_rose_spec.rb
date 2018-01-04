@@ -19,19 +19,19 @@ describe GildedRose do
   describe "#update_quality" do
     it "does not change the name" do
       items = [ItemDouble.new("foo", 0, 0)]
-      GildedRose.new(items).update_quality()
+      GildedRose.new(items, ItemSorter, AgedBrie, Sulfuras, BackstagePass).update_quality()
       expect(items[0].name).to eq "foo"
     end
 
     it "quality degrades twice as fast after sell_in date has passed" do
       items = [ItemDouble.new("junk", 0, 10)]
-      GildedRose.new(items).update_quality()
+      GildedRose.new(items, ItemSorter, AgedBrie, Sulfuras, BackstagePass).update_quality()
       expect(items[0].quality).to eq 8
     end
 
     it "quality is never negative" do
       items = [ItemDouble.new("junk", 5, 5)]
-      10.times { GildedRose.new(items).update_quality() }
+      10.times { GildedRose.new(items, ItemSorter, AgedBrie, Sulfuras, BackstagePass).update_quality() }
       expect(items[0].quality).to eq 0
     end
 

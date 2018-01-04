@@ -12,7 +12,13 @@ class ItemSorter
   end
 
   def sort_and_update(item)
-    @items[item.name.to_sym].call(item)
+    special_item?(item)
+  end
+
+  private
+
+  def special_item?(item)
+    @items[item.name.to_sym].call(item) if @items[item.name.to_sym]
   end
 
 end
