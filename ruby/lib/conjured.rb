@@ -7,5 +7,6 @@ class Conjured
         item.quality = item.quality - 2
       end
     end
+    item.sell_in -= 1
   end
 end
