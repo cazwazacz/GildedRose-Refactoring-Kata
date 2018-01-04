@@ -1,22 +1,14 @@
 class GildedRose
-  def initialize(items)
+  def initialize(items, item_sorter)
     @items = items
+    @item_sorter = item_sorter
   end
 
   def update_quality
     @items.each do |item|
-      after_sell_in(item)
+      p @item_sorter.sort[item.name.to_sym]
     end
   end
-
-  private
-
-  def after_sell_in(item)
-    if item.sell_in < 1
-      item.quality = item.quality - 2
-    end
-  end
-
   # def update_quality()
   #   @items.each do |item|
   #     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
