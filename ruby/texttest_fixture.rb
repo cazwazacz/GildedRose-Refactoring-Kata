@@ -1,6 +1,12 @@
 #!/usr/bin/ruby -w
 
 require File.join(File.dirname(__FILE__), '/lib/gilded_rose')
+require File.join(File.dirname(__FILE__), '/lib/item')
+require File.join(File.dirname(__FILE__), '/lib/item_sorter')
+require File.join(File.dirname(__FILE__), '/lib/aged_brie')
+require File.join(File.dirname(__FILE__), '/lib/sulfuras')
+require File.join(File.dirname(__FILE__), '/lib/backstage_pass')
+require File.join(File.dirname(__FILE__), '/lib/conjured')
 
 puts "OMGHAI!"
 items = [
@@ -12,8 +18,7 @@ items = [
   Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
   Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
   Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
-  # This Conjured item does not work properly yet
-  Item.new(name="Conjured Mana Cake", sell_in=3, quality=6), # <-- :O
+  Item.new(name="Conjured Mana Cake", sell_in=3, quality=6)
 ]
 
 days = 2
@@ -21,7 +26,7 @@ if ARGV.size > 0
   days = ARGV[0].to_i + 1
 end
 
-gilded_rose = GildedRose.new items
+gilded_rose = GildedRose.new items, ItemSorter, AgedBrie, Sulfuras, BackstagePass, Conjured
 (0...days).each do |day|
   puts "-------- day #{day} --------"
   puts "name, sellIn, quality"
