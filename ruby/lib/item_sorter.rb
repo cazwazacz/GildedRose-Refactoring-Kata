@@ -1,15 +1,11 @@
 class ItemSorter
 
   def initialize(aged_brie, sulfuras, backstage_pass, conjured)
-    @aged_brie = aged_brie
-    @sulfuras = sulfuras
-    @backstage_pass = backstage_pass
-    @conjured = conjured
     @items = {
-      "Aged Brie": lambda { |item| @aged_brie.update_quality(item) },
-      "Sulfuras, Hand of Ragnaros": lambda { |item| @sulfuras.update_quality(item) },
-      "Backstage passes to a TAFKAL80ETC concert": lambda { |item| @backstage_pass.update_quality(item) },
-      "Conjured Mana Cake": lambda { |item| @conjured.update_quality(item) }
+      "Aged Brie": lambda { |item| aged_brie.update_quality(item) },
+      "Sulfuras, Hand of Ragnaros": lambda { |item| sulfuras.update_quality(item) },
+      "Backstage passes to a TAFKAL80ETC concert": lambda { |item| backstage_pass.update_quality(item) },
+      "Conjured Mana Cake": lambda { |item| conjured.update_quality(item) }
     }
   end
 
@@ -35,6 +31,7 @@ class ItemSorter
         item.quality = item.quality - 1
       end
     end
+    item.sell_in = item.sell_in - 1
   end
 
 end
