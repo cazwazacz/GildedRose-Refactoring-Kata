@@ -1,7 +1,7 @@
 class GildedRose
-  def initialize(items, item_sorter, aged_brie, sulfuras, backstage_pass)
+  def initialize(items, item_sorter, aged_brie, sulfuras, backstage_pass, conjured)
     @items = items
-    @item_sorter = item_sorter.new(aged_brie, sulfuras, backstage_pass)
+    @item_sorter = item_sorter.new(aged_brie, sulfuras, backstage_pass, conjured)
   end
 
   def update_quality
