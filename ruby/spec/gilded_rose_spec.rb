@@ -18,11 +18,6 @@ end
 describe GildedRose do
 
   describe "#update_quality" do
-    it "does not change the name" do
-      items = [ItemDouble.new("foo", 0, 0)]
-      GildedRose.new(items, ItemSorter, AgedBrie, Sulfuras, BackstagePass, Conjured).update_quality()
-      expect(items[0].name).to eq "foo"
-    end
 
     it "quality degrades twice as fast after sell_in date has passed" do
       items = [ItemDouble.new("junk", 0, 10)]
