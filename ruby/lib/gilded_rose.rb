@@ -6,7 +6,7 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      p @item_sorter.sort_and_update(item.name)
+      @item_sorter.sort_and_update(item)
     end
   end
   # def update_quality()
